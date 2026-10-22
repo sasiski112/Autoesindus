@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Autoesindus.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="et">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%: Page.Title %> – Autoesindus</title>
+    <link href="~/Content/autosalong.css" rel="stylesheet" runat="server" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <script runat="server">
+        protected string Act(string name)
+        {
+            return Request.Path.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0 ? "active" : "";
+        }
+        protected string ActHome()
+        {
+            string p = Request.Path.TrimEnd('/');
+            return (p == "" || p.IndexOf("Default", StringComparison.OrdinalIgnoreCase) >= 0) ? "active" : "";
+        }
+    </script>
+
+    <form id="form1" runat="server">
+        <header class="topbar">
+            <div class="topbar-in">
+                <a class="brand" href="<%= ResolveUrl("~/") %>">Autoesindus</a>
+                <nav class="nav">
+                    <a class="<%= ActHome() %>" href="<%= ResolveUrl("~/") %>">Avaleht</a>
+                    <a class="<%= Act("Autod") %>" href="<%= ResolveUrl("~/Autod") %>">Autod</a>
+                    <a class="<%= Act("LisaAuto") %>" href="<%= ResolveUrl("~/LisaAuto") %>">Lisa auto</a>
+                    <a class="<%= Act("Kliendid") %>" href="<%= ResolveUrl("~/Kliendid") %>">Kliendid</a>
+                    <a class="<%= Act("Tellimused") %>" href="<%= ResolveUrl("~/Tellimused") %>">Tellimused</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="page">
+            <asp:ContentPlaceHolder ID="FeaturedContent" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+
+        <footer class="footer">&copy; <%: DateTime.Now.Year %> Autoesindus</footer>
+    </form>
+</body>
+</html>

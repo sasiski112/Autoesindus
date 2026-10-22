@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="TootajaSet" EntityType="Model1.Store.TootajaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ametSet" EntityType="Model1.Store.ametSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ametiMaaratusSet" EntityType="Model1.Store.ametiMaaratusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="lisavarustusSet" EntityType="Model1.Store.lisavarustusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="autoLisavarustusSet" EntityType="Model1.Store.autoLisavarustusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="autoSet" EntityType="Model1.Store.autoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="markSet" EntityType="Model1.Store.markSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KategooriaSet" EntityType="Model1.Store.KategooriaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="salongSet" EntityType="Model1.Store.salongSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TellimusSet" EntityType="Model1.Store.TellimusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TellimusAutoSet" EntityType="Model1.Store.TellimusAutoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KlientSet" EntityType="Model1.Store.KlientSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ametametiMaaratus" Association="Model1.Store.ametametiMaaratus">
+      <End Role="amet" EntitySet="ametSet" />
+      <End Role="ametiMaaratus" EntitySet="ametiMaaratusSet" />
+    </AssociationSet>
+    <AssociationSet Name="TootajaametiMaaratus" Association="Model1.Store.TootajaametiMaaratus">
+      <End Role="Tootaja" EntitySet="TootajaSet" />
+      <End Role="ametiMaaratus" EntitySet="ametiMaaratusSet" />
+    </AssociationSet>
+    <AssociationSet Name="lisavarustusautoLisavarustus" Association="Model1.Store.lisavarustusautoLisavarustus">
+      <End Role="lisavarustus" EntitySet="lisavarustusSet" />
+      <End Role="autoLisavarustus" EntitySet="autoLisavarustusSet" />
+    </AssociationSet>
+    <AssociationSet Name="markauto" Association="Model1.Store.markauto">
+      <End Role="mark" EntitySet="markSet" />
+      <End Role="auto" EntitySet="autoSet" />
+    </AssociationSet>
+    <AssociationSet Name="autoautoLisavarustus" Association="Model1.Store.autoautoLisavarustus">
+      <End Role="auto" EntitySet="autoSet" />
+      <End Role="autoLisavarustus" EntitySet="autoLisavarustusSet" />
+    </AssociationSet>
+    <AssociationSet Name="Kategooriaauto" Association="Model1.Store.Kategooriaauto">
+      <End Role="Kategooria" EntitySet="KategooriaSet" />
+      <End Role="auto" EntitySet="autoSet" />
+    </AssociationSet>
+    <AssociationSet Name="salongTellimus" Association="Model1.Store.salongTellimus">
+      <End Role="salong" EntitySet="salongSet" />
+      <End Role="Tellimus" EntitySet="TellimusSet" />
+    </AssociationSet>
+    <AssociationSet Name="TellimusTellimusAuto" Association="Model1.Store.TellimusTellimusAuto">
+      <End Role="Tellimus" EntitySet="TellimusSet" />
+      <End Role="TellimusAuto" EntitySet="TellimusAutoSet" />
+    </AssociationSet>
+    <AssociationSet Name="autoTellimusAuto" Association="Model1.Store.autoTellimusAuto">
+      <End Role="auto" EntitySet="autoSet" />
+      <End Role="TellimusAuto" EntitySet="TellimusAutoSet" />
+    </AssociationSet>
+    <AssociationSet Name="KlientTellimus" Association="Model1.Store.KlientTellimus">
+      <End Role="Klient" EntitySet="KlientSet" />
+      <End Role="Tellimus" EntitySet="TellimusSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TootajaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isikukood" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ametSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ametiMaaratusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="alguskuupaev" Type="datetime" Nullable="false" />
+    <Property Name="amet_Id" Type="int" Nullable="false" />
+    <Property Name="Tootaja_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lisavarustusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lisahind" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="autoLisavarustusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lisavarustus_Id" Type="int" Nullable="false" />
+    <Property Name="auto_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="autoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="hind" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mark_Id" Type="int" Nullable="false" />
+    <Property Name="Kategooria_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="markSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KategooriaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="salongSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="kohtadeArv" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TellimusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kuupaev" Type="datetime" Nullable="false" />
+    <Property Name="kellaaeg" Type="time" Nullable="false" />
+    <Property Name="staatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="salong_Id" Type="int" Nullable="false" />
+    <Property Name="Klient_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TellimusAutoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tellimus_Id" Type="int" Nullable="false" />
+    <Property Name="auto_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KlientSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ametametiMaaratus">
+    <End Role="amet" Type="Model1.Store.ametSet" Multiplicity="1" />
+    <End Role="ametiMaaratus" Type="Model1.Store.ametiMaaratusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="amet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ametiMaaratus">
+        <PropertyRef Name="amet_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TootajaametiMaaratus">
+    <End Role="Tootaja" Type="Model1.Store.TootajaSet" Multiplicity="1" />
+    <End Role="ametiMaaratus" Type="Model1.Store.ametiMaaratusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tootaja">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ametiMaaratus">
+        <PropertyRef Name="Tootaja_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lisavarustusautoLisavarustus">
+    <End Role="lisavarustus" Type="Model1.Store.lisavarustusSet" Multiplicity="1" />
+    <End Role="autoLisavarustus" Type="Model1.Store.autoLisavarustusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lisavarustus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="autoLisavarustus">
+        <PropertyRef Name="lisavarustus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="markauto">
+    <End Role="mark" Type="Model1.Store.markSet" Multiplicity="1" />
+    <End Role="auto" Type="Model1.Store.autoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mark">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="auto">
+        <PropertyRef Name="mark_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="autoautoLisavarustus">
+    <End Role="auto" Type="Model1.Store.autoSet" Multiplicity="1" />
+    <End Role="autoLisavarustus" Type="Model1.Store.autoLisavarustusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="auto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="autoLisavarustus">
+        <PropertyRef Name="auto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Kategooriaauto">
+    <End Role="Kategooria" Type="Model1.Store.KategooriaSet" Multiplicity="1" />
+    <End Role="auto" Type="Model1.Store.autoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategooria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="auto">
+        <PropertyRef Name="Kategooria_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="salongTellimus">
+    <End Role="salong" Type="Model1.Store.salongSet" Multiplicity="1" />
+    <End Role="Tellimus" Type="Model1.Store.TellimusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salong">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tellimus">
+        <PropertyRef Name="salong_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TellimusTellimusAuto">
+    <End Role="Tellimus" Type="Model1.Store.TellimusSet" Multiplicity="1" />
+    <End Role="TellimusAuto" Type="Model1.Store.TellimusAutoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tellimus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TellimusAuto">
+        <PropertyRef Name="Tellimus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="autoTellimusAuto">
+    <End Role="auto" Type="Model1.Store.autoSet" Multiplicity="1" />
+    <End Role="TellimusAuto" Type="Model1.Store.TellimusAutoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="auto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TellimusAuto">
+        <PropertyRef Name="auto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlientTellimus">
+    <End Role="Klient" Type="Model1.Store.KlientSet" Multiplicity="1" />
+    <End Role="Tellimus" Type="Model1.Store.TellimusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tellimus">
+        <PropertyRef Name="Klient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TootajaSet" EntityType="Model1.Tootaja" />
+          <EntitySet Name="ametSet" EntityType="Model1.amet" />
+          <EntitySet Name="ametiMaaratusSet" EntityType="Model1.ametiMaaratus" />
+          <AssociationSet Name="ametametiMaaratus" Association="Model1.ametametiMaaratus">
+            <End Role="amet" EntitySet="ametSet" />
+            <End Role="ametiMaaratus" EntitySet="ametiMaaratusSet" />
+          </AssociationSet>
+          <AssociationSet Name="TootajaametiMaaratus" Association="Model1.TootajaametiMaaratus">
+            <End Role="Tootaja" EntitySet="TootajaSet" />
+            <End Role="ametiMaaratus" EntitySet="ametiMaaratusSet" />
+          </AssociationSet>
+          <EntitySet Name="lisavarustusSet" EntityType="Model1.lisavarustus" />
+          <EntitySet Name="autoLisavarustusSet" EntityType="Model1.autoLisavarustus" />
+          <EntitySet Name="autoSet" EntityType="Model1.auto" />
+          <AssociationSet Name="lisavarustusautoLisavarustus" Association="Model1.lisavarustusautoLisavarustus">
+            <End Role="lisavarustus" EntitySet="lisavarustusSet" />
+            <End Role="autoLisavarustus" EntitySet="autoLisavarustusSet" />
+          </AssociationSet>
+          <EntitySet Name="markSet" EntityType="Model1.mark" />
+          <AssociationSet Name="markauto" Association="Model1.markauto">
+            <End Role="mark" EntitySet="markSet" />
+            <End Role="auto" EntitySet="autoSet" />
+          </AssociationSet>
+          <EntitySet Name="KategooriaSet" EntityType="Model1.Kategooria" />
+          <AssociationSet Name="autoautoLisavarustus" Association="Model1.autoautoLisavarustus">
+            <End Role="auto" EntitySet="autoSet" />
+            <End Role="autoLisavarustus" EntitySet="autoLisavarustusSet" />
+          </AssociationSet>
+          <AssociationSet Name="Kategooriaauto" Association="Model1.Kategooriaauto">
+            <End Role="Kategooria" EntitySet="KategooriaSet" />
+            <End Role="auto" EntitySet="autoSet" />
+          </AssociationSet>
+          <EntitySet Name="salongSet" EntityType="Model1.salong" />
+          <EntitySet Name="TellimusSet" EntityType="Model1.Tellimus" />
+          <AssociationSet Name="salongTellimus" Association="Model1.salongTellimus">
+            <End Role="salong" EntitySet="salongSet" />
+            <End Role="Tellimus" EntitySet="TellimusSet" />
+          </AssociationSet>
+          <EntitySet Name="TellimusAutoSet" EntityType="Model1.TellimusAuto" />
+          <AssociationSet Name="TellimusTellimusAuto" Association="Model1.TellimusTellimusAuto">
+            <End Role="Tellimus" EntitySet="TellimusSet" />
+            <End Role="TellimusAuto" EntitySet="TellimusAutoSet" />
+          </AssociationSet>
+          <AssociationSet Name="autoTellimusAuto" Association="Model1.autoTellimusAuto">
+            <End Role="auto" EntitySet="autoSet" />
+            <End Role="TellimusAuto" EntitySet="TellimusAutoSet" />
+          </AssociationSet>
+          <EntitySet Name="KlientSet" EntityType="Model1.Klient" />
+          <AssociationSet Name="KlientTellimus" Association="Model1.KlientTellimus">
+            <End Role="Klient" EntitySet="KlientSet" />
+            <End Role="Tellimus" EntitySet="TellimusSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tootaja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eesnimi" Type="String" Nullable="false" />
+          <Property Name="perenimi" Type="String" Nullable="false" />
+          <Property Name="isikukood" Type="String" Nullable="false" />
+          <NavigationProperty Name="ametiMaaratus" Relationship="Model1.TootajaametiMaaratus" FromRole="Tootaja" ToRole="ametiMaaratus" />
+        </EntityType>
+        <EntityType Name="amet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="kirjeldus" Type="String" Nullable="false" />
+          <NavigationProperty Name="ametiMaaratus" Relationship="Model1.ametametiMaaratus" FromRole="amet" ToRole="ametiMaaratus" />
+        </EntityType>
+        <EntityType Name="ametiMaaratus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alguskuupaev" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="amet" Relationship="Model1.ametametiMaaratus" FromRole="ametiMaaratus" ToRole="amet" />
+          <NavigationProperty Name="Tootaja" Relationship="Model1.TootajaametiMaaratus" FromRole="ametiMaaratus" ToRole="Tootaja" />
+        </EntityType>
+        <Association Name="ametametiMaaratus">
+          <End Type="Model1.amet" Role="amet" Multiplicity="1" />
+          <End Type="Model1.ametiMaaratus" Role="ametiMaaratus" Multiplicity="*" />
+        </Association>
+        <Association Name="TootajaametiMaaratus">
+          <End Type="Model1.Tootaja" Role="Tootaja" Multiplicity="1" />
+          <End Type="Model1.ametiMaaratus" Role="ametiMaaratus" Multiplicity="*" />
+        </Association>
+        <EntityType Name="lisavarustus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="lisahind" Type="String" Nullable="false" />
+          <NavigationProperty Name="autoLisavarustus" Relationship="Model1.lisavarustusautoLisavarustus" FromRole="lisavarustus" ToRole="autoLisavarustus" />
+        </EntityType>
+        <EntityType Name="autoLisavarustus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="lisavarustus" Relationship="Model1.lisavarustusautoLisavarustus" FromRole="autoLisavarustus" ToRole="lisavarustus" />
+          <NavigationProperty Name="auto" Relationship="Model1.autoautoLisavarustus" FromRole="autoLisavarustus" ToRole="auto" />
+        </EntityType>
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="kirjeldus" Type="String" Nullable="false" />
+          <Property Name="hind" Type="String" Nullable="false" />
+          <NavigationProperty Name="mark" Relationship="Model1.markauto" FromRole="auto" ToRole="mark" />
+          <NavigationProperty Name="autoLisavarustus" Relationship="Model1.autoautoLisavarustus" FromRole="auto" ToRole="autoLisavarustus" />
+          <NavigationProperty Name="Kategooria" Relationship="Model1.Kategooriaauto" FromRole="auto" ToRole="Kategooria" />
+          <NavigationProperty Name="TellimusAuto" Relationship="Model1.autoTellimusAuto" FromRole="auto" ToRole="TellimusAuto" />
+        </EntityType>
+        <Association Name="lisavarustusautoLisavarustus">
+          <End Type="Model1.lisavarustus" Role="lisavarustus" Multiplicity="1" />
+          <End Type="Model1.autoLisavarustus" Role="autoLisavarustus" Multiplicity="*" />
+        </Association>
+        <EntityType Name="mark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Model1.markauto" FromRole="mark" ToRole="auto" />
+        </EntityType>
+        <Association Name="markauto">
+          <End Type="Model1.mark" Role="mark" Multiplicity="1" />
+          <End Type="Model1.auto" Role="auto" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Kategooria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Model1.Kategooriaauto" FromRole="Kategooria" ToRole="auto" />
+        </EntityType>
+        <Association Name="autoautoLisavarustus">
+          <End Type="Model1.auto" Role="auto" Multiplicity="1" />
+          <End Type="Model1.autoLisavarustus" Role="autoLisavarustus" Multiplicity="*" />
+        </Association>
+        <Association Name="Kategooriaauto">
+          <End Type="Model1.Kategooria" Role="Kategooria" Multiplicity="1" />
+          <End Type="Model1.auto" Role="auto" Multiplicity="*" />
+        </Association>
+        <EntityType Name="salong">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" Nullable="false" />
+          <Property Name="kohtadeArv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Tellimus" Relationship="Model1.salongTellimus" FromRole="salong" ToRole="Tellimus" />
+        </EntityType>
+        <EntityType Name="Tellimus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kuupaev" Type="DateTime" Nullable="false" />
+          <Property Name="kellaaeg" Type="Time" Nullable="false" />
+          <Property Name="staatus" Type="String" Nullable="false" />
+          <NavigationProperty Name="salong" Relationship="Model1.salongTellimus" FromRole="Tellimus" ToRole="salong" />
+          <NavigationProperty Name="TellimusAuto" Relationship="Model1.TellimusTellimusAuto" FromRole="Tellimus" ToRole="TellimusAuto" />
+          <NavigationProperty Name="Klient" Relationship="Model1.KlientTellimus" FromRole="Tellimus" ToRole="Klient" />
+        </EntityType>
+        <Association Name="salongTellimus">
+          <End Type="Model1.salong" Role="salong" Multiplicity="1" />
+          <End Type="Model1.Tellimus" Role="Tellimus" Multiplicity="*" />
+        </Association>
+        <EntityType Name="TellimusAuto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Tellimus" Relationship="Model1.TellimusTellimusAuto" FromRole="TellimusAuto" ToRole="Tellimus" />
+          <NavigationProperty Name="auto" Relationship="Model1.autoTellimusAuto" FromRole="TellimusAuto" ToRole="auto" />
+        </EntityType>
+        <Association Name="TellimusTellimusAuto">
+          <End Type="Model1.Tellimus" Role="Tellimus" Multiplicity="1" />
+          <End Type="Model1.TellimusAuto" Role="TellimusAuto" Multiplicity="*" />
+        </Association>
+        <Association Name="autoTellimusAuto">
+          <End Type="Model1.auto" Role="auto" Multiplicity="1" />
+          <End Type="Model1.TellimusAuto" Role="TellimusAuto" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eesnimi" Type="String" Nullable="false" />
+          <Property Name="perenimi" Type="String" Nullable="false" />
+          <Property Name="telefon" Type="String" Nullable="false" />
+          <NavigationProperty Name="Tellimus" Relationship="Model1.KlientTellimus" FromRole="Klient" ToRole="Tellimus" />
+        </EntityType>
+        <Association Name="KlientTellimus">
+          <End Type="Model1.Klient" Role="Klient" Multiplicity="1" />
+          <End Type="Model1.Tellimus" Role="Tellimus" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="TootajaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Tootaja)">
+        <MappingFragment StoreEntitySet="TootajaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="eesnimi" ColumnName="eesnimi" />
+          <ScalarProperty Name="perenimi" ColumnName="perenimi" />
+          <ScalarProperty Name="isikukood" ColumnName="isikukood" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ametSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.amet)">
+        <MappingFragment StoreEntitySet="ametSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nimetus" ColumnName="nimetus" />
+          <ScalarProperty Name="kirjeldus" ColumnName="kirjeldus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ametiMaaratusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.ametiMaaratus)">
+        <MappingFragment StoreEntitySet="ametiMaaratusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="alguskuupaev" ColumnName="alguskuupaev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lisavarustusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.lisavarustus)">
+        <MappingFragment StoreEntitySet="lisavarustusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nimetus" ColumnName="nimetus" />
+          <ScalarProperty Name="lisahind" ColumnName="lisahind" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="autoLisavarustusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.autoLisavarustus)">
+        <MappingFragment StoreEntitySet="autoLisavarustusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="autoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.auto)">
+        <MappingFragment StoreEntitySet="autoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nimetus" ColumnName="nimetus" />
+          <ScalarProperty Name="kirjeldus" ColumnName="kirjeldus" />
+          <ScalarProperty Name="hind" ColumnName="hind" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="markSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.mark)">
+        <MappingFragment StoreEntitySet="markSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nimetus" ColumnName="nimetus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategooriaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Kategooria)">
+        <MappingFragment StoreEntitySet="KategooriaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nimetus" ColumnName="nimetus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="salongSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.salong)">
+        <MappingFragment StoreEntitySet="salongSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="kohtadeArv" ColumnName="kohtadeArv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TellimusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Tellimus)">
+        <MappingFragment StoreEntitySet="TellimusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="kuupaev" ColumnName="kuupaev" />
+          <ScalarProperty Name="kellaaeg" ColumnName="kellaaeg" />
+          <ScalarProperty Name="staatus" ColumnName="staatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TellimusAutoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.TellimusAuto)">
+        <MappingFragment StoreEntitySet="TellimusAutoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlientSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Klient)">
+        <MappingFragment StoreEntitySet="KlientSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="eesnimi" ColumnName="eesnimi" />
+          <ScalarProperty Name="perenimi" ColumnName="perenimi" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ametametiMaaratus" TypeName="Model1.ametametiMaaratus" StoreEntitySet="ametiMaaratusSet">
+      <EndProperty Name="amet">
+        <ScalarProperty Name="Id" ColumnName="amet_Id" />
+      </EndProperty>
+      <EndProperty Name="ametiMaaratus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TootajaametiMaaratus" TypeName="Model1.TootajaametiMaaratus" StoreEntitySet="ametiMaaratusSet">
+      <EndProperty Name="Tootaja">
+        <ScalarProperty Name="Id" ColumnName="Tootaja_Id" />
+      </EndProperty>
+      <EndProperty Name="ametiMaaratus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="lisavarustusautoLisavarustus" TypeName="Model1.lisavarustusautoLisavarustus" StoreEntitySet="autoLisavarustusSet">
+      <EndProperty Name="lisavarustus">
+        <ScalarProperty Name="Id" ColumnName="lisavarustus_Id" />
+      </EndProperty>
+      <EndProperty Name="autoLisavarustus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="markauto" TypeName="Model1.markauto" StoreEntitySet="autoSet">
+      <EndProperty Name="mark">
+        <ScalarProperty Name="Id" ColumnName="mark_Id" />
+      </EndProperty>
+      <EndProperty Name="auto">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="autoautoLisavarustus" TypeName="Model1.autoautoLisavarustus" StoreEntitySet="autoLisavarustusSet">
+      <EndProperty Name="auto">
+        <ScalarProperty Name="Id" ColumnName="auto_Id" />
+      </EndProperty>
+      <EndProperty Name="autoLisavarustus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Kategooriaauto" TypeName="Model1.Kategooriaauto" StoreEntitySet="autoSet">
+      <EndProperty Name="Kategooria">
+        <ScalarProperty Name="Id" ColumnName="Kategooria_Id" />
+      </EndProperty>
+      <EndProperty Name="auto">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="salongTellimus" TypeName="Model1.salongTellimus" StoreEntitySet="TellimusSet">
+      <EndProperty Name="salong">
+        <ScalarProperty Name="Id" ColumnName="salong_Id" />
+      </EndProperty>
+      <EndProperty Name="Tellimus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TellimusTellimusAuto" TypeName="Model1.TellimusTellimusAuto" StoreEntitySet="TellimusAutoSet">
+      <EndProperty Name="Tellimus">
+        <ScalarProperty Name="Id" ColumnName="Tellimus_Id" />
+      </EndProperty>
+      <EndProperty Name="TellimusAuto">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="autoTellimusAuto" TypeName="Model1.autoTellimusAuto" StoreEntitySet="TellimusAutoSet">
+      <EndProperty Name="auto">
+        <ScalarProperty Name="Id" ColumnName="auto_Id" />
+      </EndProperty>
+      <EndProperty Name="TellimusAuto">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KlientTellimus" TypeName="Model1.KlientTellimus" StoreEntitySet="TellimusSet">
+      <EndProperty Name="Klient">
+        <ScalarProperty Name="Id" ColumnName="Klient_Id" />
+      </EndProperty>
+      <EndProperty Name="Tellimus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75cf901272ea4b39a044495a1dd2da56" Name="Diagram1" ZoomLevel="79" >
+        <EntityTypeShape EntityType="Model1.Tootaja" Width="1.5" PointX="4.875" PointY="4.5" />
+        <EntityTypeShape EntityType="Model1.amet" Width="1.5" PointX="4.375" PointY="1.375" />
+        <EntityTypeShape EntityType="Model1.ametiMaaratus" Width="1.5" PointX="7.5" PointY="1.875" />
+        <AssociationConnector Association="Model1.ametametiMaaratus" />
+        <AssociationConnector Association="Model1.TootajaametiMaaratus" />
+        <EntityTypeShape EntityType="Model1.lisavarustus" Width="1.5" PointX="13.25" PointY="1.75" />
+        <EntityTypeShape EntityType="Model1.autoLisavarustus" Width="1.5" PointX="13.625" PointY="4.625" />
+        <EntityTypeShape EntityType="Model1.auto" Width="1.5" PointX="12.125" PointY="7" />
+        <AssociationConnector Association="Model1.lisavarustusautoLisavarustus" />
+        <EntityTypeShape EntityType="Model1.mark" Width="1.5" PointX="17.375" PointY="6.25" />
+        <AssociationConnector Association="Model1.markauto" />
+        <EntityTypeShape EntityType="Model1.Kategooria" Width="1.5" PointX="14.125" PointY="9.375" />
+        <AssociationConnector Association="Model1.autoautoLisavarustus" />
+        <AssociationConnector Association="Model1.Kategooriaauto" />
+        <EntityTypeShape EntityType="Model1.salong" Width="1.5" PointX="6.875" PointY="9.875" />
+        <EntityTypeShape EntityType="Model1.Tellimus" Width="1.5" PointX="7.375" PointY="6" />
+        <AssociationConnector Association="Model1.salongTellimus" />
+        <EntityTypeShape EntityType="Model1.TellimusAuto" Width="1.5" PointX="9.75" PointY="4.625" />
+        <AssociationConnector Association="Model1.TellimusTellimusAuto" />
+        <AssociationConnector Association="Model1.autoTellimusAuto" />
+        <EntityTypeShape EntityType="Model1.Klient" Width="1.5" PointX="9.5" PointY="9.125" />
+        <AssociationConnector Association="Model1.KlientTellimus" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
